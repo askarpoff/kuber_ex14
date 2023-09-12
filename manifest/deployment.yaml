@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: app
+  name: app
+  namespace: ex14
+spec:
+  replicas: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 3
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - image: nginx:1.19
+        imagePullPolicy: IfNotPresent
+        name: nginx
+        ports:
+          - containerPort: 80
+      - image: praqma/network-multitool:alpine-extra
+        imagePullPolicy: IfNotPresent
+        name: multitool
+        env:
+          - name: HTTP_PORT
+            value: "8080"
+        ports:
+          - containerPort: 8080
