@@ -33,11 +33,20 @@
 
 1. Создать deployment приложения с контейнерами nginx и multitool. Версию nginx взять 1.19. Количество реплик — 5.
 
+[deployment.yaml](https://github.com/askarpoff/kuber_ex14/blob/main/manifest/deployment.yaml)
+
+![image](https://github.com/askarpoff/kuber_ex14/assets/108946489/e648b8c3-4e0d-4c2e-9943-91d0e4f51876)
 
 2. Обновить версию nginx в приложении до версии 1.20, сократив время обновления до минимума. Приложение должно быть доступно.
 
+![image](https://github.com/askarpoff/kuber_ex14/assets/108946489/4fe69f31-cd9d-4ad0-9c14-79277d6e71fd)
+![image](https://github.com/askarpoff/kuber_ex14/assets/108946489/1d5c7fb4-0b6d-4fd5-a088-b1a580bffeae)
 
 3. Попытаться обновить nginx до версии 1.28, приложение должно оставаться доступным.
 
+![image](https://github.com/askarpoff/kuber_ex14/assets/108946489/ca143416-81ad-418e-8111-728fbc26e900)
 
 4. Откатиться после неудачного обновления.
+
+Делаю ```kubectl rollout undo deployment app --to-revision=2```
+![image](https://github.com/askarpoff/kuber_ex14/assets/108946489/fe7eafc6-62e7-4d4b-a171-c6d03fe3f9fd)
